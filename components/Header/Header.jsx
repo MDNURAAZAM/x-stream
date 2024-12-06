@@ -8,8 +8,8 @@ const Header = () => {
         <Image
           src="/assets/logo.svg"
           alt="LWS Xstream Logo"
-          className="h-8"
-          height={50}
+          className="h-8 w-50"
+          height={1000}
           width={205}
         />
         <nav className=" hidden md:flex space-x-6">
