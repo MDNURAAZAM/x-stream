@@ -2,5 +2,6 @@ import { NextResponse } from "next/server";
 import { getAllVideos } from "../utils";
 
 export async function GET() {
-  return NextResponse.json(getAllVideos());
+  const videos = getAllVideos();
+  return NextResponse.json(videos);
 }
