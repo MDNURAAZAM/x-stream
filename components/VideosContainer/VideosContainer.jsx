@@ -1,8 +1,10 @@
 import React from "react";
 import VideoCard from "./VideoCard";
 import Link from "next/link";
+import { getData } from "../utils";
 
-const VideosContainer = () => {
+const VideosContainer = async () => {
+  const videos = await getData("videos");
   return (
     <section className="mt-12">
       <div className="flex justify-between items-center mb-4">
@@ -16,12 +18,11 @@ const VideosContainer = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
+        {videos?.map((video) => (
+          <Link key={video?.videoId} href={"#"}>
+            <VideoCard video={video} />
+          </Link>
+        ))}
       </div>
     </section>
   );
