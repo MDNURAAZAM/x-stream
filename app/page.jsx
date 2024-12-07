@@ -6,7 +6,6 @@ export default function HomePage() {
     <>
       <Hero />
       <VideosContainer />
-      {/* <VideoDetails /> */}
     </>
   );
 }
