@@ -1,8 +1,7 @@
 import Hero from "@/components/Hero/Hero";
-import VideoDetails from "@/components/VideoDetails/VideoDetails";
 import VideosContainer from "@/components/VideosContainer/VideosContainer";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <Hero />

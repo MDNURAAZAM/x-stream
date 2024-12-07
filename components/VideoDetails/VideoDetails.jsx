@@ -1,15 +1,21 @@
 import React from "react";
 import SimilarVideoCard from "./SimilarVideoCard";
 import Image from "next/image";
+import { getData } from "../utils";
 
-const VideoDetails = () => {
+const VideoDetails = async ({ videoId }) => {
+  const videos = await getData("videos");
+  const video = videos?.find((video) => video?.videoId === videoId);
+
+  const { title, channelTitle } = video || {};
+
   return (
     <main className="flex flex-col lg:flex-row gap-6">
       <div className="lg:w-3/4">
         <div className="relative">
           <iframe
-            src="https://www.youtube.com/embed/hecODa5ZgZM"
-            title="YouTube video player"
+            src={`https://www.youtube.com/embed/${videoId}`}
+            title={title}
             frameborder="0"
             className="w-full aspect-video h-[500px]"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -51,10 +57,7 @@ const VideoDetails = () => {
             </div>
           </div>
         </div>
-        <h1 className="text-2xl font-bold mt-4">
-          GTA V : BATMAN WAS KIDNAPPED || GTA V Bangla GAMEPLAY || Professor Of
-          Pc Gaming
-        </h1>
+        <h1 className="text-2xl font-bold mt-4">{title}</h1>
         <div className="flex items-center space-x-4 mt-2">
           {/* <!-- যেহেতু videos.json এ কোনো Avatar দেয়া নাই, সেহেতু আপনি যেকোনো র‍্যান্ডম Avatar ব্যবহার করতে পারবেন --> */}
           <Image
@@ -65,7 +68,7 @@ const VideoDetails = () => {
             height={1000}
           />
           <div>
-            <p className="font-semibold">Professor Of Pc Gaming</p>
+            <p className="font-semibold">{channelTitle}</p>
           </div>
           <button className="bg-color-purple hover:bg-opacity-80 text-white px-4 py-1 rounded-full text-sm ml-auto">
             Subscribe
