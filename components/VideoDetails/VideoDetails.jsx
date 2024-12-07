@@ -2,10 +2,15 @@ import React from "react";
 import SimilarVideoCard from "./SimilarVideoCard";
 import Image from "next/image";
 import { getData } from "../utils";
+import { notFound } from "next/navigation";
 
 const VideoDetails = async ({ videoId }) => {
   const videos = await getData("videos");
   const video = videos?.find((video) => video?.videoId === videoId);
+
+  if (!video?.videoId) {
+    notFound();
+  }
 
   const { title, channelTitle } = video || {};
 
