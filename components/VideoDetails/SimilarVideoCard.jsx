@@ -9,7 +9,6 @@ const SimilarVideoCard = ({ video }) => {
   const pathname = usePathname();
 
   const handleClick = () => {
-    console.log(pathname);
     const path = pathname?.split("/").slice(0, -1).join("/");
     bypassInterceptingRoute(`${path}/${videoId}`);
   };

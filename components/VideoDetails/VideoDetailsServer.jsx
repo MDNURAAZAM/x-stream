@@ -5,8 +5,8 @@ import { getData, getRandomIndexArray } from "../utils";
 import { notFound } from "next/navigation";
 import { getDictionary } from "@/app/[lang]/dictionaries";
 
-const VideoDetails = async ({ videoId, lang }) => {
-  const dictionary = await getDictionary(lang || "en");
+const VideoDetailsServer = async ({ videoId, lang }) => {
+  const dictionary = await getDictionary(lang);
 
   const videos = await getData("videos");
   const video = videos?.find((video) => video?.videoId === videoId);
@@ -26,11 +26,11 @@ const VideoDetails = async ({ videoId, lang }) => {
           <iframe
             src={`https://www.youtube.com/embed/${videoId}`}
             title={title}
-            frameBorder="0"
+            frameborder="0"
             className="w-full aspect-video h-[500px]"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
           ></iframe>
 
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
@@ -100,4 +100,4 @@ const VideoDetails = async ({ videoId, lang }) => {
   );
 };
 
-export default VideoDetails;
+export default VideoDetailsServer;
