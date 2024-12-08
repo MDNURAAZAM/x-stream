@@ -11,10 +11,10 @@ export async function generateStaticParams() {
   }));
 }
 
-const VideoDetailsPage = ({ params: { videoId } }) => {
+const VideoDetailsPage = ({ params: { videoId, lang } }) => {
   return (
     <Modal>
-      <VideoDetails videoId={videoId} />
+      <VideoDetails videoId={videoId} lang={lang} />
     </Modal>
   );
 };

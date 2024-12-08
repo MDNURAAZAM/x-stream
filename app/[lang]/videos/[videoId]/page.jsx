@@ -10,8 +10,8 @@ export async function generateStaticParams() {
   }));
 }
 
-const VideoDetailsPage = ({ params: { videoId } }) => {
-  return <VideoDetails videoId={videoId} />;
+const VideoDetailsPage = ({ params: { videoId, lang } }) => {
+  return <VideoDetails videoId={videoId} lang={lang} />;
 };
 
 export default VideoDetailsPage;

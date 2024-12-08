@@ -3,8 +3,11 @@ import SimilarVideoCard from "./SimilarVideoCard";
 import Image from "next/image";
 import { getData } from "../utils";
 import { notFound } from "next/navigation";
+import { getDictionary } from "@/app/[lang]/dictionaries";
 
-const VideoDetails = async ({ videoId }) => {
+const VideoDetails = async ({ videoId, lang }) => {
+  const dictionary = await getDictionary(lang);
+
   const videos = await getData("videos");
   const video = videos?.find((video) => video?.videoId === videoId);
 
@@ -53,11 +56,11 @@ const VideoDetails = async ({ videoId }) => {
                 </svg>
               </button>
               <div className="bg-color-purple text-white px-2 py-1 rounded text-sm">
-                LIVE
+                {dictionary?.live}
               </div>
               <span className="text-sm">46:02</span>
               <button className="bg-color-purple hover:bg-opacity-80 text-white px-4 py-1 rounded-full text-sm">
-                Donate
+                {dictionary?.donate}
               </button>
             </div>
           </div>
@@ -76,12 +79,12 @@ const VideoDetails = async ({ videoId }) => {
             <p className="font-semibold">{channelTitle}</p>
           </div>
           <button className="bg-color-purple hover:bg-opacity-80 text-white px-4 py-1 rounded-full text-sm ml-auto">
-            Subscribe
+            {dictionary?.subscribe}
           </button>
         </div>
       </div>
       <div className="lg:w-1/4">
-        <h2 className="text-xl font-semibold mb-4">You may like</h2>
+        <h2 className="text-xl font-semibold mb-4">{dictionary?.youMayLike}</h2>
         <div className="space-y-4">
           <SimilarVideoCard />
           <SimilarVideoCard />

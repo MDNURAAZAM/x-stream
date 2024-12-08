@@ -3,8 +3,9 @@ import VideoCard from "./VideoCard";
 import Link from "next/link";
 import { getData } from "../utils";
 
-const VideosContainer = async () => {
+const VideosContainer = async ({ lang }) => {
   const videos = await getData("videos");
+
   return (
     <section className="mt-12">
       <div className="flex justify-between items-center mb-4">
@@ -19,7 +20,7 @@ const VideosContainer = async () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {videos?.map((video) => (
-          <Link key={video?.videoId} href={`/en/videos/${video?.videoId}`}>
+          <Link key={video?.videoId} href={`/${lang}/videos/${video?.videoId}`}>
             <VideoCard video={video} />
           </Link>
         ))}

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/public/assets/logo.svg";
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 
 const Header = () => {
   return (
@@ -49,7 +50,7 @@ const Header = () => {
             ></path>
           </svg>
         </div>
-
+        <LanguageSwitcher />
         <Image
           src="/assets/avatar.png"
           alt="User Avatar"
