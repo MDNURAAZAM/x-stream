@@ -1,7 +1,7 @@
 import React from "react";
 import SimilarVideoCard from "./SimilarVideoCard";
 import Image from "next/image";
-import { getData } from "../utils";
+import { getData, getRandomIndexArray } from "../utils";
 import { notFound } from "next/navigation";
 import { getDictionary } from "@/app/[lang]/dictionaries";
 
@@ -16,6 +16,8 @@ const VideoDetails = async ({ videoId, lang }) => {
   }
 
   const { title, channelTitle } = video || {};
+
+  const similarVideoIndices = getRandomIndexArray(videos?.length);
 
   return (
     <main className="flex flex-col lg:flex-row gap-6">
@@ -86,10 +88,12 @@ const VideoDetails = async ({ videoId, lang }) => {
       <div className="lg:w-1/4">
         <h2 className="text-xl font-semibold mb-4">{dictionary?.youMayLike}</h2>
         <div className="space-y-4">
-          <SimilarVideoCard />
-          <SimilarVideoCard />
-          <SimilarVideoCard />
-          <SimilarVideoCard />
+          {similarVideoIndices?.map((index) => (
+            <SimilarVideoCard
+              key={videos[index]?.videoId}
+              video={videos[index]}
+            />
+          ))}
         </div>
       </div>
     </main>

@@ -22,7 +22,7 @@ export function Modal({ children }) {
     <div className="modal-backdrop">
       <dialog
         ref={dialogRef}
-        className="p-4 fixed max-w-full max-h-full rounded-sm"
+        className="p-4 fixed max-w-[90vw] max-h-full rounded-sm"
         onClose={onDismiss}
       >
         {children}

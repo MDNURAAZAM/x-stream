@@ -1,6 +1,10 @@
 import React from "react";
+import { getData, getRandomIndexArray } from "../utils";
 
-const Hero = () => {
+const Hero = async () => {
+  const videos = await getData("videos");
+  const randomIndex = getRandomIndexArray(videos?.length)[0];
+  const { title, videoId } = videos[randomIndex] || {};
   return (
     <main className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-center">
       <div className="lg:col-span-2">
@@ -19,7 +23,7 @@ const Hero = () => {
       <div className="lg:col-span-2">
         <div className="relative rounded-lg overflow-hidden">
           <iframe
-            src="https://www.youtube.com/embed/0VtVPk7Zv9c"
+            src={`https://www.youtube.com/embed/${videoId}`}
             title="YouTube video player"
             frameBorder="0"
             className="w-full aspect-video"
@@ -40,9 +44,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <p className="mt-2 text-sm text-gray-400">
-          Battle for the castle with Franck Jourdan and Eva703
-        </p>
+        <p className="mt-2 text-sm text-gray-400">{title}</p>
       </div>
     </main>
   );

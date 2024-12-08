@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { bypassInterceptingRoute } from "./utils";
@@ -54,7 +52,7 @@ const LanguageSwitcher = () => {
     <div className="flex gap-4 items-center">
       <div className="relative">
         <button
-          className="flex items-center gap-2"
+          className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-lg hover:bg-gray-700"
           onClick={() => setShowMenu(!showMenu)}
         >
           {/* <Image
