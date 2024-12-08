@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import logo from "@/public/assets/logo.svg";
 
 const Header = () => {
   return (
@@ -7,7 +8,7 @@ const Header = () => {
       <div className="flex items-center space-x-8">
         <Link href={"/"}>
           <Image
-            src="/assets/logo.svg"
+            src={logo}
             alt="LWS Xstream Logo"
             className="h-8 w-50"
             height={1000}
